@@ -1,0 +1,16 @@
+title: Jamie Downsworth
+description: >- # this means to ignore newlines until "baseurl:"
+  software developer by day, live music recordist by night. sometimes I write and do other things too. this webpage 
+  hopefully includes everything I do and everywhere I am on the web, for better and worse.
+
+url: "https://www.jamiedownsworth.co.uk"
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+author:
+  name: Jamie Downsworth
+
+feed:
+  posts_limit: 100

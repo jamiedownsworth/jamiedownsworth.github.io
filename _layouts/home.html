@@ -1,0 +1,94 @@
+---
+layout: base
+---
+
+<header>
+  <h1>{{ site.title }}</h1>
+
+  <p>{{ site.description }}</p>
+</header>
+
+<h2>Writings</h2>
+
+{% assign writings = site.categories.writings | where_exp: "item", "item.published != false" | concat: site.data.external_writings | sort: 'date' | reverse %}
+
+<ul class="grid-list">
+  {% for post in writings limit: 5 %}
+  <li>
+    <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <aside>{{ post.description | default: post.publisher }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if writings.size > 5 %}
+  <aside class="view-all">
+    <a href="/writings">view all &raquo;</a>
+  </aside>
+{% endif %}
+
+<h2>Websites</h2>
+
+{% assign websites = site.data.websites | sort: 'datetime' | reverse %}
+
+<ul class="grid-list">
+  {% for website in websites %}
+  <li>
+    <time datetime="{{ website.datetime }}">{{ website.date_range }}</time>
+    <div>
+      <a href="{{ website.url }}">{{ website.name }}</a>
+      <aside>{{ website.description }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Recordings</h2>
+
+{% assign recordings = site.data.recordings | sort: 'date' | reverse %}
+
+<ul class="grid-list">
+  {% for recording in recordings limit: 5 %}
+  <li>
+    <time>{{ recording.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ '/recordings/' | append: recording.slug | relative_url }}">{{ recording.artist }}</a>
+      <aside>{{ recording.location }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if recordings.size > 5 %}
+<aside class="view-all">
+  <a href="{{ '/recordings/' | relative_url }}">view all &raquo;</a>
+</aside>
+{% endif %}
+
+<h2>Links</h2>
+
+<ul class="cols-2">
+  <li><a href="https://github.com/jamiedownsworth">GitHub</a></li>
+  <li><a href="https://www.instagram.com/jdownsworth/">Instagram</a></li>
+  <li><a href="https://letterboxd.com/jamiedownsworth/">Letterboxd</a></li>
+</ul>
+
+<h2>RSS feeds</h2>
+
+<ul class="cols-2">
+  <li><a href="/feed.xml">All content</a></li>
+
+  {% for category in site.categories %}
+    <li><a href="{{ category[0] | append: '/feed.xml' | relative_url }}">{{ category[0] | capitalize }}</a></li>
+  {% endfor %}
+</ul>
+
+<footer>
+  built with <span class="magenta">&#9829;</span> and without AI in
+  <time datetime="2026-07-01">2026</time>. last update
+  <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y-%m-%d' }}</time>.
+  <a href="/sitemap.xml">sitemap</a>.
+</footer>

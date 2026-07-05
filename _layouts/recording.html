@@ -1,0 +1,46 @@
+---
+layout: page
+---
+
+{% if page.images.size > 0 %}
+<section class="image-gallery">
+  <a href="{{ page.images[0].full | relative_path }}" target="_blank" title="View full size">
+    <img src="{{ page.images[0].full | relative_path }}" alt="{{ page.title }}"/>
+  </a>
+
+  {% if page.images.size > 1 %}
+  <div class="image-gallery-grid">
+    {% for image in page.images offset:1 %}
+    <a href="{{ image.full | relative_path }}" target="_blank" title="View full size">
+      <img src="{{ image.thumb | relative_path }}" alt="{{ page.title }}"/>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endif %}
+
+<pre>{{ content }}</pre>
+
+{% if page.recording.archive and page.recording.archive != nil and page.var != "" and page.recording.archive != empty and page.recording.archive != blank %}
+
+<h3>Stream</h3>
+
+<iframe src="https://archive.org/embed/{{ page.recording.archive }}?playlist=1&list_height=150" style="height: 150px;"
+        frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen
+        title="Embedded audio player from the Internet Archive"></iframe>
+
+<h3>Download</h3>
+
+<ul>
+  <li><a href="https://archive.org/download/{{ page.recording.archive }}/{{ page.recording.archive }}_archive.torrent">Download
+    via BitTorrent</a></li>
+  <li><a href="https://archive.org/compress/{{ page.recording.archive }}">Download via HTTP</a></li>
+</ul>
+
+{% else %}
+
+<h3>Download</h3>
+
+<p>Recording unavailable.</p>
+{% endif %}

@@ -1,0 +1,44 @@
+---
+layout: page
+---
+
+{% if page.category == "recordings" %}
+{% assign recordings = site.data.recordings | sort: 'date' | reverse %}
+{% assign recordings_by_year = recordings | group_by_exp: "recording", "recording.date | date: '%Y'" %}
+
+{% for year_group in recordings_by_year %}
+<h3>{{ year_group.name }}</h3>
+<ul class="grid-list">
+  {% for recording in year_group.items %}
+  <li>
+    <time>{{ recording.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ '/recordings/' | append: recording.slug | relative_url }}">{{ recording.artist }}</a>
+      <aside>{{ recording.location }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endfor %}
+{% else %}
+
+{% assign posts = page.posts %}
+
+{% if page.category == "writings" %}
+{% assign posts = site.categories.writings | concat: site.data.external_writings %}
+{% endif %}
+
+{% assign posts = posts | sort: 'date' | reverse %}
+
+<ul class="grid-list">
+  {% for post in posts %}
+  <li>
+    <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <aside>{{ post.description | default: post.publisher }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}

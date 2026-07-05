@@ -1,0 +1,31 @@
+King Gizzard and the Lizard Wizard
+2023-03-23
+Troxy
+London, UK
+
+Source: 2x YouTube videos > yt-dlp > Opus
+Transfer: Opus > Reaper (mixing/mastering) > WAV > Audacity (track splits only) > WAV
+
+The first source was a video shot on the balcony, which is switched to the audio from another video shot at the front of the stage during Predator X. These were https://www.youtube.com/watch?v=nxTIf2d04oQ and https://www.youtube.com/watch?v=cppWjwiHFMg.
+
+1. [intro]
+2. Hell >
+3. Predator X
+4. Hot Wax
+5. Inner Cell >
+6. Loyalty >
+7. Horology
+8. Magenta Mountain
+9. Straws in the Wind
+10. K.G.L.W. (Outro)
+11. The Wheel
+12. A New World >
+13. Altered Beast III >
+14. Alter Me III >
+15. Altered Beast IV
+16. Lava
+17. Ice V
+18. Sadie Sorceress
+19. Am I In Heaven?
+
+Taped by M (https://www.youtube.com/@M49716) & Streamus (https://www.youtube.com/@alteredbeastbroadcasting)
