@@ -8,44 +8,6 @@ layout: base
   <p>{{ site.description }}</p>
 </header>
 
-<h2>Writings</h2>
-
-{% assign writings = site.categories.writings | where_exp: "item", "item.published != false" | concat: site.data.external_writings | sort: 'date' | reverse %}
-
-<ul class="grid-list">
-  {% for post in writings limit: 5 %}
-  <li>
-    <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-    <div>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      <aside>{{ post.description | default: post.publisher }}</aside>
-    </div>
-  </li>
-  {% endfor %}
-</ul>
-
-{% if writings.size > 5 %}
-  <aside class="view-all">
-    <a href="/writings">view all &raquo;</a>
-  </aside>
-{% endif %}
-
-<h2>Websites</h2>
-
-{% assign websites = site.data.websites | sort: 'datetime' | reverse %}
-
-<ul class="grid-list">
-  {% for website in websites %}
-  <li>
-    <time datetime="{{ website.datetime }}">{{ website.date_range }}</time>
-    <div>
-      <a href="{{ website.url }}">{{ website.name }}</a>
-      <aside>{{ website.description }}</aside>
-    </div>
-  </li>
-  {% endfor %}
-</ul>
-
 <h2>Recordings</h2>
 
 {% assign recordings = site.data.recordings | sort: 'date' | reverse %}
@@ -66,6 +28,44 @@ layout: base
 <aside class="view-all">
   <a href="{{ '/recordings/' | relative_url }}">view all &raquo;</a>
 </aside>
+{% endif %}
+
+<h2>Websites</h2>
+
+{% assign websites = site.data.websites | sort: 'datetime' | reverse %}
+
+<ul class="grid-list">
+  {% for website in websites %}
+  <li>
+    <time datetime="{{ website.datetime }}">{{ website.date_range }}</time>
+    <div>
+      <a href="{{ website.url }}">{{ website.name }}</a>
+      <aside>{{ website.description }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+<h2>Writings</h2>
+
+{% assign writings = site.categories.writings | where_exp: "item", "item.published != false" | concat: site.data.external_writings | sort: 'date' | reverse %}
+
+<ul class="grid-list">
+  {% for post in writings limit: 5 %}
+  <li>
+    <time>{{ post.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      <aside>{{ post.description | default: post.publisher }}</aside>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if writings.size > 5 %}
+  <aside class="view-all">
+    <a href="/writings">view all &raquo;</a>
+  </aside>
 {% endif %}
 
 <h2>Links</h2>
